@@ -3,7 +3,7 @@ const theme = {
     orange: "#FF8A00",
     silver: "#EEEEEE",
     white: "#FFFFFF",
-    gray: "#CCCCCC",
+    gray: "#646464",
     seaweed: "#1BD97B",
     leadGlass: "#FFFAE6",
   },
