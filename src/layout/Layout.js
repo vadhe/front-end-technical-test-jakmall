@@ -51,6 +51,6 @@ const LayoutStyled = styled.div`
 `;
 const ContainerStyled = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
-  height: 550px;
+  height: auto;
   padding: 1rem;
 `;
