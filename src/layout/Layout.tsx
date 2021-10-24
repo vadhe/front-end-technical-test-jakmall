@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable import/no-unresolved */
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Delivery from "../pages/Delivery";
@@ -7,6 +9,25 @@ import React from "react";
 import Step from "../components/Step";
 import styled from "styled-components";
 
+const LayoutStyled = styled.div`
+  background-color: ${({ theme }) => theme.colors.leadGlass};
+  padding-top: 2rem;
+  .wrap-step {
+    display: none;
+  }
+  @media (min-width: 1024px) {
+    .wrap-step {
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+`;
+const ContainerStyled = styled.div`
+  background-color: ${({ theme }) => theme.colors.white};
+  height: auto;
+  padding: 1rem;
+`;
 const Layout = () => {
   return (
     <Router>
@@ -35,22 +56,3 @@ const Layout = () => {
 };
 
 export default Layout;
-const LayoutStyled = styled.div`
-  background-color: ${({ theme }) => theme.colors.leadGlass};
-  padding-top: 2rem;
-  .wrap-step {
-    display: none;
-  }
-  @media (min-width: 1024px) {
-    .wrap-step {
-      padding: 2rem;
-      display: flex;
-      justify-content: center;
-    }
-  }
-`;
-const ContainerStyled = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
-  height: auto;
-  padding: 1rem;
-`;

@@ -1,6 +1,7 @@
 import { IoIosArrowForward } from "react-icons/io";
 import React from "react";
 import styled from "styled-components";
+
 const Step = () => {
   return (
     <StepStyled>
