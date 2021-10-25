@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable import/no-unresolved */
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 import Delivery from "../pages/Delivery";
@@ -10,7 +8,7 @@ import Step from "../components/Step";
 import styled from "styled-components";
 
 const LayoutStyled = styled.div`
-  background-color: ${({ theme }) => theme.colors.leadGlass};
+  background-color: #fffae6;
   padding-top: 2rem;
   .wrap-step {
     display: none;
@@ -24,7 +22,7 @@ const LayoutStyled = styled.div`
   }
 `;
 const ContainerStyled = styled.div`
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: #fff;
   height: auto;
   padding: 1rem;
 `;
@@ -42,7 +40,7 @@ const Layout = () => {
             <Route exact path="/">
               <Delivery />
             </Route>
-            <Route path="/payment">
+            <Route path="/73">
               <Payment />
             </Route>
             <Route path="/finish">

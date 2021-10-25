@@ -1,4 +1,14 @@
-const theme = {
+export interface Itheme {
+  colors: {
+    orange: string;
+    silver: string;
+    white: string;
+    gray: string;
+    seaweed: string;
+    leadGlass: string;
+  };
+}
+const theme: Itheme = {
   colors: {
     orange: "#FF8A00",
     silver: "#EEEEEE",

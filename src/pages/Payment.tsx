@@ -49,9 +49,7 @@ const Payment: React.FC = () => {
           <Card />
         </div>
       </section>
-      <section className="summary">
-        <Summary />
-      </section>
+      <section className="summary">{/* <Summary /> */}</section>
     </PaymentStyled>
   );
 };

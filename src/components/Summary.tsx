@@ -3,6 +3,7 @@ import * as React from "react";
 import ButtonStyled from "../styled/ButtonStyled";
 import FlexStyled from "../styled/FlexStyled";
 import HeadingStyled from "../styled/HeadingStyled";
+import { SummaryContext } from "../context/SummaryContext";
 import styled from "styled-components";
 
 const SummaryStyled = styled.div`
@@ -23,8 +24,12 @@ const SummaryStyled = styled.div`
     padding: 0 1rem;
   }
 `;
-
-const Summary: React.FC = () => {
+interface ISummary {
+  button: string;
+  onSubmit: () => void;
+}
+const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
+  const { cost, fee, total } = React.useContext(SummaryContext);
   return (
     <SummaryStyled>
       <div className="grid-item-1">
@@ -37,23 +42,23 @@ const Summary: React.FC = () => {
       <div className="grid-item-3">
         <FlexStyled marginY="1rem">
           <p>Cost of goods</p>
-          <p>500,000</p>
+          <p>{cost}</p>
         </FlexStyled>
         <FlexStyled marginY="1rem">
           <p>Dropshipping Fee</p>
-          <p>5,900</p>
+          <p>{fee}</p>
         </FlexStyled>
         <FlexStyled marginY="1rem">
           <HeadingStyled as="h3" size="24px">
             Total
           </HeadingStyled>
           <HeadingStyled as="h3" size="24px">
-            505,900
+            {total}
           </HeadingStyled>
         </FlexStyled>
       </div>
       <div className="grid-item-4">
-        <ButtonStyled>Submit</ButtonStyled>
+        <ButtonStyled onClick={onSubmit}>{button}</ButtonStyled>
       </div>
     </SummaryStyled>
   );

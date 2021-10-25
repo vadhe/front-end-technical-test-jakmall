@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import styled from "styled-components";
 
 interface TypeHeading {
@@ -7,7 +6,7 @@ interface TypeHeading {
 }
 const HeadingStyled = styled.div<TypeHeading>`
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.orange};
+  color: #ff8a00;
   font-size: ${({ size }) => size};
   margin-top: ${({ marginY }) => marginY};
   margin-bottom: ${({ marginY }) => marginY};

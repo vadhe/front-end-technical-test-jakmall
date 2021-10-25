@@ -41,9 +41,7 @@ const Finish: React.FC = () => {
         <Back marginY="4rem" />
         {/* </div> */}
       </section>
-      <section className="summary">
-        <Summary />
-      </section>
+      <section className="summary">{/* <Summary /> */}</section>
     </FinishStyled>
   );
 };
