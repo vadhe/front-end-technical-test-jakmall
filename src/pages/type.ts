@@ -3,4 +3,5 @@ export interface IFormInputs {
   phone: string;
   dropShipperName: string;
   dropshipperphone: string;
+  address: string;
 }

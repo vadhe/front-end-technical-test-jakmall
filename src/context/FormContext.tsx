@@ -6,10 +6,12 @@ interface IFormContex {
   isPhone: string;
   isDropshipName: string;
   isDropshipPhone: string;
+  isAddress: string;
   validateEmail: (isValid: boolean) => void;
   validatePhone: (isValid: boolean) => void;
   validateDropshipName: (isValid: boolean) => void;
   validateDropshipPhone: (isValid: boolean) => void;
+  validateAddress: (isValid: boolean) => void;
 }
 export const FormContex = React.createContext({} as IFormContex);
 
@@ -34,6 +36,11 @@ const FormContextProvider: React.FC = ({ children }) => {
     if (isValid) setIsDropshipPhone("valid");
     if (!isValid) setIsDropshipPhone("invalid");
   };
+  const [isAddress, setIsAddress] = React.useState("default");
+  const validateAddress = (isValid: boolean) => {
+    if (isValid) setIsAddress("valid");
+    if (!isValid) setIsAddress("invalid");
+  };
   return (
     <FormContex.Provider
       value={{
@@ -45,6 +52,8 @@ const FormContextProvider: React.FC = ({ children }) => {
         validateDropshipName,
         isDropshipPhone,
         validateDropshipPhone,
+        isAddress,
+        validateAddress,
       }}
     >
       {children}

@@ -4,6 +4,7 @@ import ButtonStyled from "../styled/ButtonStyled";
 import FlexStyled from "../styled/FlexStyled";
 import HeadingStyled from "../styled/HeadingStyled";
 import { SummaryContext } from "../context/SummaryContext";
+import { formatCurrency } from "../utils/numberToRupiah";
 import styled from "styled-components";
 
 const SummaryStyled = styled.div`
@@ -14,7 +15,7 @@ const SummaryStyled = styled.div`
   grid-template-rows: repeat(4, minmax(0, 1fr));
   .item-purchased {
     font-size: 16px;
-    color: #ccc;
+    color: #8d8d8d;
   }
   .grid-item-4 {
     grid-row-start: 4;
@@ -29,7 +30,7 @@ interface ISummary {
   onSubmit: () => void;
 }
 const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
-  const { cost, fee, total } = React.useContext(SummaryContext);
+  const { cost, feeDropship, total } = React.useContext(SummaryContext);
   return (
     <SummaryStyled>
       <div className="grid-item-1">
@@ -42,18 +43,20 @@ const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
       <div className="grid-item-3">
         <FlexStyled marginY="1rem">
           <p>Cost of goods</p>
-          <p>{cost}</p>
+          <p>{formatCurrency(cost)}</p>
         </FlexStyled>
-        <FlexStyled marginY="1rem">
-          <p>Dropshipping Fee</p>
-          <p>{fee}</p>
-        </FlexStyled>
+        {feeDropship !== 0 && (
+          <FlexStyled marginY="1rem">
+            <p>Dropshipping Fee</p>
+            <p>{formatCurrency(feeDropship)}</p>
+          </FlexStyled>
+        )}
         <FlexStyled marginY="1rem">
           <HeadingStyled as="h3" size="24px">
             Total
           </HeadingStyled>
           <HeadingStyled as="h3" size="24px">
-            {total}
+            {formatCurrency(total)}
           </HeadingStyled>
         </FlexStyled>
       </div>

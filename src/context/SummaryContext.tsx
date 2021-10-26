@@ -2,16 +2,19 @@ import * as React from "react";
 
 interface ISummary {
   cost: string | number;
-  fee: string | number;
+  feeDropship: string | number;
   total: string | number;
+  setFeeDropship: any;
 }
 export const SummaryContext = React.createContext({} as ISummary);
 
 const SummaryContextProvider: React.FC = ({ children }) => {
   const [cost] = React.useState(5000);
-  const [fee] = React.useState(5000);
-  const total = cost + fee;
-  return <SummaryContext.Provider value={{ cost, fee, total }}>{children}</SummaryContext.Provider>;
+  const [feeDropship, setFeeDropship] = React.useState(0);
+  const total = cost + feeDropship;
+  return (
+    <SummaryContext.Provider value={{ cost, feeDropship, total, setFeeDropship }}>{children}</SummaryContext.Provider>
+  );
 };
 
 export default SummaryContextProvider;

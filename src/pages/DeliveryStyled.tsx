@@ -50,7 +50,8 @@ export const DeliveryStyled = styled.div`
     align-items: center;
     position: relative;
     margin: 1rem 0;
-    input {
+    input,
+    textarea {
       width: 100%;
       padding: 10px 0px;
       margin-top: 20px;
@@ -59,7 +60,8 @@ export const DeliveryStyled = styled.div`
       padding-left: 1rem;
       background-color: transparent;
     }
-    input::placeholder {
+    input::placeholder,
+    textarea::placeholder {
       opacity: 0;
     }
     span {
@@ -71,8 +73,21 @@ export const DeliveryStyled = styled.div`
       font-size: 0.825em;
       transition-duration: 300ms;
     }
+    label {
+      width: 100%;
+    }
+    textarea {
+      min-height: 100px;
+      position: relative;
+    }
+    .length-address {
+      position: absolute;
+      right: 10px;
+      bottom: 5px;
+    }
     label:focus-within > span,
-    input:not(:placeholder-shown) + span {
+    input:not(:placeholder-shown) + span,
+    textarea:not(:placeholder-shown) + span {
       top: 10px;
       transform: translateY(0px);
     }
@@ -96,13 +111,9 @@ export const DeliveryStyled = styled.div`
   .default {
     border: 1px solid #646464;
   }
-  .ic-validation {
-    margin-right: 1rem;
-  }
-  .show {
-    display: block !important;
-  }
-  .hidden {
-    display: none !important;
+  .text-danger {
+    font-size: 16px;
+    color: #ff8a00;
+    font-style: italic;
   }
 `;
