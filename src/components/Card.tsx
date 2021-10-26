@@ -1,11 +1,12 @@
 import * as React from "react";
 
 import { BsCheck2 } from "react-icons/bs";
+import { formatCurrency } from "../utils/numberToRupiah";
 import styled from "styled-components";
 
 const CardStyled = styled.div`
   width: 100%;
-  border: 1px solid red;
+  border: 1px solid #ccc;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,12 +15,17 @@ const CardStyled = styled.div`
     margin: 0.5rem 0;
   }
 `;
-const Card: React.FC = () => {
+interface ICard {
+  onClick: () => void;
+  name: string;
+  cost?: number;
+}
+const Card: React.FC<ICard> = ({ onClick, cost, name }) => {
   return (
-    <CardStyled>
+    <CardStyled onClick={onClick}>
       <div>
-        <p>GO-SEND</p>
-        <p>15,000</p>
+        <p>{name}</p>
+        <p>{cost && formatCurrency(cost)}</p>
       </div>
       <BsCheck2 />
     </CardStyled>

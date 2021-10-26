@@ -17,8 +17,14 @@ const SummaryStyled = styled.div`
     font-size: 16px;
     color: #8d8d8d;
   }
+  .grid-item-2 {
+    margin-top: 1rem;
+  }
   .grid-item-4 {
     grid-row-start: 4;
+  }
+  .text-green {
+    color: #1bd97b;
   }
   @media (min-width: 1280px) {
     width: 300px;
@@ -27,10 +33,10 @@ const SummaryStyled = styled.div`
 `;
 interface ISummary {
   button: string;
-  onSubmit: () => void;
+  onSubmit?: () => void;
 }
 const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
-  const { cost, feeDropship, total } = React.useContext(SummaryContext);
+  const { cost, feeDropship, total, shipment, paymentMethod } = React.useContext(SummaryContext);
   return (
     <SummaryStyled>
       <div className="grid-item-1">
@@ -39,7 +45,24 @@ const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
         </HeadingStyled>
         <p className="item-purchased">10 items purchased</p>
       </div>
-      <div className="grid-item-2" />
+      <div className="grid-item-2">
+        {shipment.name && (
+          <>
+            <p>Delivery estimation</p>
+            <p className="text-green">
+              {shipment.estimate}
+              by
+              {shipment.name}
+            </p>
+          </>
+        )}
+        {paymentMethod && (
+          <>
+            <p>Payment method</p>
+            <p className="text-green">{paymentMethod}</p>
+          </>
+        )}
+      </div>
       <div className="grid-item-3">
         <FlexStyled marginY="1rem">
           <p>Cost of goods</p>
@@ -51,6 +74,12 @@ const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
             <p>{formatCurrency(feeDropship)}</p>
           </FlexStyled>
         )}
+        {shipment && (
+          <FlexStyled marginY="1rem">
+            <p>{shipment.name} shipment</p>
+            <p>{formatCurrency(shipment.cost)}</p>
+          </FlexStyled>
+        )}
         <FlexStyled marginY="1rem">
           <HeadingStyled as="h3" size="24px">
             Total
@@ -60,9 +89,7 @@ const Summary: React.FC<ISummary> = ({ button, onSubmit }) => {
           </HeadingStyled>
         </FlexStyled>
       </div>
-      <div className="grid-item-4">
-        <ButtonStyled onClick={onSubmit}>{button}</ButtonStyled>
-      </div>
+      <div className="grid-item-4">{button && <ButtonStyled onClick={onSubmit}>{button}</ButtonStyled>}</div>
     </SummaryStyled>
   );
 };

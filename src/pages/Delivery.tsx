@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import * as React from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -31,15 +33,12 @@ const Delivery: React.FC = () => {
     getValues,
     formState: { errors },
   } = useForm<IFormInputs>();
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
   const { setFeeDropship } = React.useContext(SummaryContext);
   const [checked, setChecked] = React.useState(false);
   const [lengthText, setLengtexh] = React.useState(120);
   const history = useHistory();
   const addFeeDropship = () => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     if (checked) setFeeDropship(5900);
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
     if (!checked) setFeeDropship(0);
   };
   const onSubmit: SubmitHandler<IFormInputs> = (data) => {
